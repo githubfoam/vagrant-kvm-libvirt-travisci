@@ -32,17 +32,13 @@ jobs:
           - sudo vagrant status
           - sudo virsh list --all #show all running KVM/libvirt VMs
           - sudo vagrant box add "centos/7" --provider=libvirt
-          # - sudo vagrant box add "bento/centos-7.7" --provider=libvirt
           - vagrant box list #veridy installed boxes
           - vagrant status #Check the status of the VMs to see that none of them have been created yet
-          # - sudo vagrant up --provider=libvirt #Bring up all the images
           - sudo vagrant up --provider=libvirt control02
           - sudo vagrant status
           - sudo vagrant ssh control02 -c "echo 'hola mundo'"
           - sudo vagrant ssh control02  -c "hostnamectl status"
           - sudo virsh list --all #show all running KVM/libvirt VMs
-          # - vagrant ssh oob-mgmt-server
-          # - hostnamectl status
 after_success:
     - stage: Finalize
       script: sudo vagrant destroy -f
