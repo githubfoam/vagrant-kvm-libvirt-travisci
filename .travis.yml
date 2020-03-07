@@ -38,8 +38,8 @@ jobs:
           # - sudo vagrant up --provider=libvirt #Bring up all the images
           - sudo vagrant up --provider=libvirt control02
           - sudo vagrant status
-          - sudo vagrant ssh -c "echo 'hola mundo'"
-          - sudo vagrant ssh -c "hostnamectl status"
+          - sudo vagrant ssh control02 -c "echo 'hola mundo'"
+          - sudo vagrant ssh control02  -c "hostnamectl status"
           - sudo virsh list --all #show all running KVM/libvirt VMs
           # - vagrant ssh oob-mgmt-server
           # - hostnamectl status
