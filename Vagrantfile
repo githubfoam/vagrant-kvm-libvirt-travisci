@@ -21,7 +21,7 @@ sudo yum install -y docker-ce \
               containerd.io
 sudo systemctl start docker && sudo docker --version
 # Install Terraform
-sudo yum install unzip -y
+sudo yum install unzip wget -y
 wget -q -nc https://releases.hashicorp.com/terraform/0.12.18/terraform_0.12.18_linux_amd64.zip
 unzip terraform_0.12.18_linux_amd64.zip
 sudo mv terraform /usr/local/bin/
