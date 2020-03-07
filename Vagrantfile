@@ -285,7 +285,7 @@ Vagrant.configure(2) do |config|
 
   # customize vagrant instance
   config.vm.define "control02" do |dockercluster|
-    dockercluster.vm.box = "bento/centos-7.7"
+    dockercluster.vm.box = "centos/7"
     dockercluster.vm.network "private_network", ip: "172.28.128.15"
     dockercluster.vm.network "forwarded_port", guest: 80, host: 82
     dockercluster.vm.provider "virtualbox" do |vb|
