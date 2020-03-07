@@ -255,33 +255,34 @@ Vagrant.configure(2) do |config|
 
   # customize vagrant instance
   config.vm.define "control01" do |dockercluster|
-    dockercluster.vm.box = "bento/ubuntu-16.04"
+    # dockercluster.vm.box = "bento/ubuntu-16.04"
+    dockercluster.vm.box = "Microsoft/EdgeOnWindows10"
     dockercluster.vm.provider "virtualbox" do |vb|
       vb.name = "control01"
      end
      dockercluster.vm.network "private_network", ip: "172.28.128.12"
      dockercluster.vm.network "forwarded_port", guest: 80, host: 81
-     dockercluster.vm.provision "ansible_local" do |ansible|
-       ansible.playbook = "deploy.yml"
-       ansible.become = true
-       ansible.compatibility_mode = "2.0"
-       ansible.version = "2.9.2"
-     end
+     # dockercluster.vm.provision "ansible_local" do |ansible|
+     #   ansible.playbook = "deploy.yml"
+     #   ansible.become = true
+     #   ansible.compatibility_mode = "2.0"
+     #   ansible.version = "2.9.2"
+     # end
      # dockercluster.vm.provision "shell", inline: $ubuntu_docker_script, privileged: false
      # dockercluster.vm.provision "shell", inline: $ubuntu_docker_build_script, privileged: false
-     dockercluster.vm.provision "shell", inline: <<-SHELL
-     echo "===================================================================================="
-                               hostnamectl status
-     echo "===================================================================================="
-     echo "         \   ^__^                                                                  "
-     echo "          \  (oo)\_______                                                          "
-     echo "             (__)\       )\/\                                                      "
-     echo "                 ||----w |                                                         "
-     echo "                 ||     ||                                                         "
-     SHELL
-
+     # dockercluster.vm.provision "shell", inline: <<-SHELL
+     # echo "===================================================================================="
+     #                           hostnamectl status
+     # echo "===================================================================================="
+     # echo "         \   ^__^                                                                  "
+     # echo "          \  (oo)\_______                                                          "
+     # echo "             (__)\       )\/\                                                      "
+     # echo "                 ||----w |                                                         "
+     # echo "                 ||     ||                                                         "
+     # SHELL
 
   end
+
 
   # customize vagrant instance
   config.vm.define "control02" do |dockercluster|
@@ -298,7 +299,7 @@ Vagrant.configure(2) do |config|
        ansible.version = "2.9.3"
      end
     dockercluster.vm.provision "shell", inline: $centos_docker_script, privileged: false
-    # dockercluster.vm.provision "shell", inline: $centos_docker_build_script, privileged: false
+    dockercluster.vm.provision "shell", inline: $centos_docker_build_script, privileged: false
     dockercluster.vm.provision "shell", inline: <<-SHELL
     echo "===================================================================================="
                               hostnamectl status
@@ -310,7 +311,5 @@ Vagrant.configure(2) do |config|
     echo "                 ||     ||                                                         "
     SHELL
   end
-
-
 
 end
