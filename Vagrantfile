@@ -295,7 +295,7 @@ Vagrant.configure(2) do |config|
        ansible.playbook = "deploy.yml"
        ansible.become = true
        ansible.compatibility_mode = "2.0"
-       ansible.version = "2.9.3"
+       ansible.version = "2.9.6"
      end
     dockercluster.vm.provision "shell", inline: $centos_docker_script, privileged: false
     # dockercluster.vm.provision "shell", inline: $centos_docker_build_script, privileged: false
