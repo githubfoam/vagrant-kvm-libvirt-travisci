@@ -42,8 +42,8 @@ jobs:
           # - sudo vagrant up --provider=libvirt node-1
           # - sudo vagrant up --provider=libvirt node-2
           - sudo vagrant status
-          - sudo vagrant ssh control02 -c "echo 'hola mundo'"
-          - sudo vagrant ssh control02  -c "hostnamectl status"
+          - sudo vagrant ssh node-1 -c "echo 'hola mundo'"
+          - sudo vagrant ssh node-2 -c "hostnamectl status"
           - sudo virsh list --all #show all running KVM/libvirt VMs
 after_success:
     - stage: Finalize
