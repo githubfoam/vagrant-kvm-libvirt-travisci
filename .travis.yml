@@ -32,6 +32,9 @@ jobs:
           - sudo vagrant status
           - sudo virsh list --all #show all running KVM/libvirt VMs
           - sudo vagrant box add "centos/7" --provider=libvirt
+          - sudo vagrant box add "ubuntu/xenial64" --provider=libvirt
+          - sudo vagrant box add "ubuntu/bionic64" --provider=libvirt
+          - sudo vagrant box add "ubuntu/disco64" --provider=libvirt                             
           # - sudo vagrant box add "Microsoft/EdgeOnWindows10" --provider=libvirt #The box you're attempting to add doesn't support the provider
           - vagrant box list #veridy installed boxes
           - vagrant status #Check the status of the VMs to see that none of them have been created yet
