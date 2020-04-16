@@ -12,10 +12,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "k8s-master" do |k8scluster|
-      # k8scluster.vm.box = "bento/ubuntu-18.10"
-      # k8scluster.vm.box = "ubuntu/bionic64"
-      # k8scluster.vm.box = "bento/ubuntu-19.04"
-      k8scluster.vm.box = "ubuntu/disco64"      
+      k8scluster.vm.box = "ubuntu/xenial64"
       k8scluster.vm.hostname = "k8s-master"
       k8scluster.vm.network "private_network", ip: "192.168.50.10"
       k8scluster.vm.provider "virtualbox" do |vb|
@@ -46,7 +43,7 @@ Vagrant.configure(2) do |config|
 
     config.vm.define "node-1" do |k8scluster|
           # k8scluster.vm.box = "bento/ubuntu-19.04"
-          k8scluster.vm.box = "ubuntu/disco64"
+          k8scluster.vm.box = "ubuntu/xenial64"
           k8scluster.vm.hostname = "node-1"
           k8scluster.vm.network "private_network", ip: "192.168.50.11"
           k8scluster.vm.provider "virtualbox" do |vb|
