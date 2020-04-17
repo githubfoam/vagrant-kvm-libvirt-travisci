@@ -10,3 +10,11 @@
       owner: root
       group: root
       mode: 0644
+
+- name: Uploading resolv file
+  template:
+      src: resolv.conf.j2
+      dest: /etc/resolv.conf
+      owner: root
+      group: root
+      mode: 0644
