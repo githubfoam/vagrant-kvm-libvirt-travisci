@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "k8s-master" do |k8scluster|
-      # k8scluster.vm.box = "ubuntu/xenial64"
+      # k8scluster.vm.box = "ubuntu/xenial64" # not working
       k8scluster.vm.box = "centos/7"
       k8scluster.vm.hostname = "k8s-master"
       k8scluster.vm.network "private_network", ip: "192.168.50.10"
@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
         ansible.playbook = "provisioning/deploy.yml"
         ansible.become = true
         ansible.compatibility_mode = "2.0"
-        ansible.version = "2.9.6"
+        ansible.version = "2.9.7"
         ansible.extra_vars = {
                 node_ip: "192.168.50.10",
             }
