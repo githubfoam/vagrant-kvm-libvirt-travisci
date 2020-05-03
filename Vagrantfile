@@ -85,7 +85,8 @@ Vagrant.configure(2) do |config|
               # https://www.vagrantup.com/docs/provisioning/ansible_common.html Shared Ansible Options
               ansible.become = true
               ansible.compatibility_mode = "2.0"
-              ansible.version = "2.8.3" # ubuntu-16.04
+              # ansible.version = "2.8.3" # ubuntu-16.04
+              ansible.version = "2.9.7"
               ansible.extra_vars = {
                       node_ip: "192.168.50.12"
                   }
