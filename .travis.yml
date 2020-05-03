@@ -42,8 +42,8 @@ jobs:
           # - sudo vagrant box add "Microsoft/EdgeOnWindows10" --provider=libvirt
           - vagrant box list #veridy installed boxes
           - vagrant status #Check the status of the VMs to see that none of them have been created yet
-          - sudo vagrant up --provider=libvirt
-          # - sudo vagrant up --provider=libvirt k8s-master
+          # - sudo vagrant up --provider=libvirt
+          - sudo vagrant up --provider=libvirt k8s-master
           # - sudo vagrant up --provider=libvirt node-1
           # - sudo vagrant up --provider=libvirt node-2
           - sudo vagrant status
