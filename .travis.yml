@@ -28,6 +28,7 @@ jobs:
           - sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
           - vagrant version
           - sudo vagrant plugin install vagrant-libvirt
+          - sudo vagrant plugin install vagrant-mutate
           - sudo vagrant mutate "bento/ubuntu-16.04" libvirt
           - sudo vagrant box add "bento/ubuntu-16.04"
           - sudo vagrant box add "bento/ubuntu-18.10"
