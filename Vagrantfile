@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
       k8scluster.vm.network "private_network", ip: "192.168.50.10"
       k8scluster.vm.provider "virtualbox" do |vb|
           vb.name = "k8s-master"
-          vb.memory = "1024"
+          vb.memory = "4096"
       end
       k8scluster.vm.provision "ansible_local" do |ansible|
         ansible.playbook = "provisioning/deploy.yml"
@@ -42,13 +42,13 @@ Vagrant.configure(2) do |config|
 
 
     config.vm.define "node-1" do |k8scluster|
-          k8scluster.vm.box = "bento/ubuntu-19.04"
+          k8scluster.vm.box = "bento/ubuntu-16.04"
           # k8scluster.vm.box = "ubuntu/disco64 "
           k8scluster.vm.hostname = "node-1"
           k8scluster.vm.network "private_network", ip: "192.168.50.11"
           k8scluster.vm.provider "virtualbox" do |vb|
               vb.name = "node-1"
-              vb.memory = "1024"
+              vb.memory = "2048"
           end
           k8scluster.vm.provision "ansible_local" do |ansible|
             ansible.become = true
@@ -74,12 +74,11 @@ Vagrant.configure(2) do |config|
 
         config.vm.define "node-2" do |k8scluster|
             k8scluster.vm.box = "bento/ubuntu-16.04"
-            # k8scluster.vm.box = "ubuntu/xenial64 "
             k8scluster.vm.hostname = "node-2"
             k8scluster.vm.network "private_network", ip: "192.168.50.12"
             k8scluster.vm.provider "virtualbox" do |vb|
                 vb.name = "node-2"
-                vb.memory = "1024"
+                vb.memory = "2048"
             end
             k8scluster.vm.provision "ansible_local" do |ansible|
               # https://www.vagrantup.com/docs/provisioning/ansible_common.html Shared Ansible Options
