@@ -13,8 +13,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "k8s-master" do |k8scluster|
       k8scluster.vm.box = "bento/ubuntu-19.04"
-      # k8scluster.vm.box = "bento/ubuntu-18.10"
-      # k8scluster.vm.box = "ubuntu/bionic64"
       k8scluster.vm.hostname = "k8s-master"
       k8scluster.vm.network "private_network", ip: "192.168.50.10"
       k8scluster.vm.provider "virtualbox" do |vb|
@@ -55,7 +53,7 @@ Vagrant.configure(2) do |config|
           k8scluster.vm.provision "ansible_local" do |ansible|
             ansible.become = true
             ansible.compatibility_mode = "2.0"
-            ansible.version = "2.8.3"
+            ansible.version = "2.9.7"
             ansible.extra_vars = {
                     node_ip: "192.168.50.11",
                 }
