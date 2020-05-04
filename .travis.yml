@@ -47,7 +47,7 @@ jobs:
           # - sudo vagrant up --provider=libvirt node-1
           # - sudo vagrant up --provider=libvirt node-2
           - sudo vagrant status
-          - sudo vagrant ssh k8s-master -c "kubectl get nodes"
+          # - sudo vagrant ssh k8s-master -c "kubectl get nodes"
           # - sudo vagrant ssh control02  -c "hostnamectl status"
           - sudo virsh list --all #show all running KVM/libvirt VMs
 after_success:
