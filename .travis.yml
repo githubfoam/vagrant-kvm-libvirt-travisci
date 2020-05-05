@@ -39,8 +39,8 @@ jobs:
           - vagrant status #Check the status of the VMs to see that none of them have been created yet
           # - sudo vagrant up --provider=libvirt
           - sudo vagrant up --provider=libvirt k8s-master
-          - sudo vagrant up --provider=libvirt node01
-          - sudo vagrant up --provider=libvirt node02
+          # - sudo vagrant up --provider=libvirt node01
+          # - sudo vagrant up --provider=libvirt node02
           - sudo vagrant status
           - sudo vagrant ssh k8s-master -c "kubectl get nodes"
           # - sudo vagrant ssh control02  -c "hostnamectl status"
