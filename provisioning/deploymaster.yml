@@ -130,6 +130,9 @@
         msg: "Path exists and is a regular file"
       when: sym.stat.isreg is defined and sym.stat.isreg
 
+    - name: "ls -lai"
+      command: ls -lai
+
     - name: "copy admin.conf to user's kube config"
       # become: yes
       # become_user: vagrant
