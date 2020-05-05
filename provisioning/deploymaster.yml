@@ -121,9 +121,14 @@
         state: directory
         mode: 0755
 
-    - name: "stat /etc/kubernetes/admin.conf"        
+    - name: "stat /etc/kubernetes/admin.conf"
       stat:
         path: /etc/kubernetes/admin.conf
+      register: sym
+    - name: "debug /etc/kubernetes/admin.conf"      
+      debug:
+        msg: "Path exists and is a regular file"
+      when: sym.stat.isreg is defined and sym.stat.isreg
 
     - name: "copy admin.conf to user's kube config"
       # become: yes
