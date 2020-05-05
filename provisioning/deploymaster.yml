@@ -138,7 +138,8 @@
       # become_user: vagrant
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/vagrant/.kube/config
+        dest: /home/vagrant/.kube/admin.conf
+        # dest: /home/vagrant/.kube/config
         remote_src: yes
         backup: yes
         owner: vagrant
