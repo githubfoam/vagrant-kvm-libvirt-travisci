@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.define "node01" do |k8scluster|
-        k8scluster.vm.box = "bento/centos-7.4"
+        k8scluster.vm.box = "bento/centos-7.6"
         k8scluster.vm.hostname = "node01"
         k8scluster.vm.network "private_network", ip: "10.0.15.21"
         k8scluster.vm.provider "virtualbox" do |vb|
@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
 
 
       config.vm.define "node02" do |k8scluster|
-          k8scluster.vm.box = "bento/centos-7.5"
+          k8scluster.vm.box = "bento/centos-7.6"
           k8scluster.vm.hostname = "node02"
           k8scluster.vm.network "private_network", ip: "10.0.15.22"
           k8scluster.vm.provider "virtualbox" do |vb|
