@@ -110,7 +110,7 @@
         creates: cluster_initialized.txt
     # Pause for 5 minutes to build app cache. travisci
     # - pause:
-    #     minutes: 2
+    #     minutes: 5
 
     - name: "create .kube directory"
       # become: yes
@@ -125,7 +125,7 @@
       stat:
         path: /etc/kubernetes/admin.conf
       register: sym
-    - name: "debug /etc/kubernetes/admin.conf"      
+    - name: "debug /etc/kubernetes/admin.conf"
       debug:
         msg: "Path exists and is a regular file"
       when: sym.stat.isreg is defined and sym.stat.isreg
