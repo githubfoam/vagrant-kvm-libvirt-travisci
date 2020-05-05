@@ -22,7 +22,7 @@ jobs:
           - sudo kvm-ok
           - sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
           - echo "=================================================================================================================="
-          - echo "================================Installing Packer================================================================"
+          - echo "================================Installing Vagrant================================================================"
           - sudo wget -nv https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb
           - sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
           - vagrant version
@@ -42,8 +42,7 @@ jobs:
           # - sudo vagrant up --provider=libvirt node01
           # - sudo vagrant up --provider=libvirt node02
           - sudo vagrant status
-          - sudo vagrant ssh k8s-master -c "kubectl get nodes"
-          # - sudo vagrant ssh control02  -c "hostnamectl status"
+          - sudo vagrant ssh k8s-master -c "stat /etc/kubernetes/admin.conf "
           - sudo virsh list --all #show all running KVM/libvirt VMs
 after_success:
     - stage: Finalize
