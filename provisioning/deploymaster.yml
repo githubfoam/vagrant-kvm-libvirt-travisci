@@ -109,30 +109,34 @@
         chdir: /home/vagrant
         creates: cluster_initialized.txt
     # Pause for 5 minutes to build app cache. travisci
-    - pause:
-        minutes: 2
+    # - pause:
+    #     minutes: 2
 
-    - name: create .kube directory
-      become: yes
-      become_user: vagrant
+    - name: "create .kube directory"
+      # become: yes
+      # become_user: vagrant
       file:
         # path: $HOME/.kube
         path: /home/vagrant/.kube
         state: directory
         mode: 0755
 
-    - name: copy admin.conf to user's kube config
-      become: yes
-      become_user: vagrant
+    - name: "stat /etc/kubernetes/admin.conf"        
+      stat:
+        path: /etc/kubernetes/admin.conf
+
+    - name: "copy admin.conf to user's kube config"
+      # become: yes
+      # become_user: vagrant
       copy:
         src: /etc/kubernetes/admin.conf
         dest: /home/vagrant/.kube/config
         remote_src: yes
         owner: vagrant
 
-    - name: Install flannel Pod network
-      become: yes
-      become_user: vagrant
+    - name: "Install flannel Pod network"
+      # become: yes
+      # become_user: vagrant
       # shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml >> /home/vagrant/pod_network_setup.txt
       shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml | sudo tee /home/vagrant/pod_network_setup.txt
       args:
