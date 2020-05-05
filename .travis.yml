@@ -21,12 +21,12 @@ jobs:
           - sudo adduser  $(id -un) libvirtd #ensure that your username is added to the group libvirtd
           - sudo kvm-ok
           - sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
-          - echo "=================================================================================================================="
-          - echo "================================Installing Vagrant================================================================"
+          - echo "============================================="
+          - echo "=============Installing Vagrant=============="
           - sudo wget -nv https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb
           - sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
           - vagrant version
-          - echo "=================================================================================================================="
+          - echo "============================================="
           - sudo vagrant plugin install vagrant-libvirt
           - sudo vagrant plugin install vagrant-mutate
           - sudo vagrant box add "bento/centos-7.6"
