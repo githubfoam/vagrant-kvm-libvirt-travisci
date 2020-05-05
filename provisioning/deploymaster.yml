@@ -109,8 +109,8 @@
         chdir: /home/vagrant
         creates: cluster_initialized.txt
     # Pause for 5 minutes to build app cache. travisci
-    # - pause:
-    #     minutes: 5
+    - pause:
+        minutes: 2
 
     - name: create .kube directory
       become: yes
@@ -123,7 +123,7 @@
 
     - name: copy admin.conf to user's kube config
       become: yes
-      become_user: vagrant    
+      become_user: vagrant
       copy:
         src: /etc/kubernetes/admin.conf
         dest: /home/vagrant/.kube/config
