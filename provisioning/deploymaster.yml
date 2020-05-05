@@ -140,7 +140,7 @@
         src: /etc/kubernetes/admin.conf
         dest: /home/vagrant/.kube/config
         remote_src: yes
-        owner: vagrant
+        # owner: vagrant
 
     - name: "Install flannel Pod network"
       # become: yes
