@@ -121,17 +121,17 @@
         state: directory
         mode: 0755
 
-    - name: "stat /etc/kubernetes/admin.conf"
-      stat:
-        path: /etc/kubernetes/admin.conf
-      register: sym
-    - name: "debug /etc/kubernetes/admin.conf"
-      debug:
-        msg: "Path exists and is a regular file"
-      when: sym.stat.isreg is defined and sym.stat.isreg
+    # - name: "stat /etc/kubernetes/admin.conf"
+    #   stat:
+    #     path: /etc/kubernetes/admin.conf
+    #   register: sym
+    # - name: "debug /etc/kubernetes/admin.conf"
+    #   debug:
+    #     msg: "Path exists and is a regular file"
+    #   when: sym.stat.isreg is defined and sym.stat.isreg
 
-    - name: "ls -lai"
-      command: ls -lai
+    # - name: "ls -lai"
+    #   command: ls -lai
 
     - name: "copy admin.conf to user's kube config"
       # become: yes
@@ -142,6 +142,7 @@
         # dest: /home/vagrant/.kube/config
         remote_src: yes
         backup: yes
+        group: vagrant
         owner: vagrant
         # owner: vagrant
 
