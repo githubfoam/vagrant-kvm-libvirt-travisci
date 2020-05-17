@@ -6,7 +6,7 @@ rvm:
   - 2.7
 env:
   global:
-  - VAGRANT_VERSION="2.2.7"
+  - VAGRANT_VERSION="2.2.9"
 before_install:
   - sudo apt-get -qq update
 jobs:
@@ -20,12 +20,17 @@ jobs:
           - sudo addgroup libvirtd
           - sudo adduser  $(id -un) libvirtd #ensure that your username is added to the group libvirtd
           - sudo kvm-ok
-          - sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+          - echo "============================================="
+          - echo "=============Installing Vagrant=============="
           - sudo wget -nv https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb
           - sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
           - vagrant version
-          - sudo vagrant plugin install vagrant-libvirt
-          - sudo vagrant plugin install vagrant-mutate
+          - echo "============================================="
+          - sudo vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
+          - sudo vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
+          # - sudo vagrant plugin install vagrant-hostmanager #plugin that manages hosts files within a multi-machine environment
+          # - sudo vagrant plugin install vagrant-cachier #https://docs.openstack.org/developer/dragonflow/installation.html
+          # - sudo vagrant plugin install vagrant-vbguest #https://docs.openstack.org/developer/dragonflow/installation.html
           - sudo vagrant box add "bento/ubuntu-16.04"
           - sudo vagrant mutate "bento/ubuntu-16.04" libvirt
           - sudo vagrant box add "bento/ubuntu-19.04"
@@ -36,6 +41,7 @@ jobs:
           - vagrant status #Check the status of the VMs to see that none of them have been created yet
           - sudo vagrant up --provider=libvirt
           - sudo vagrant status
+          - sudo vagrant ssh k8s-master -c "hostnamectl"
           # - sudo vagrant ssh k8s-master -c "kubectl get nodes"
           - sudo virsh list --all #show all running KVM/libvirt VMs
 after_success:
