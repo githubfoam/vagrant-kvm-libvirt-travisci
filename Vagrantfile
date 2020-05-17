@@ -23,7 +23,7 @@ Vagrant.configure(2) do |config|
         ansible.playbook = "provisioning/deploy.yml"
         ansible.become = true
         ansible.compatibility_mode = "2.0"
-        ansible.version = "2.9.7"
+        ansible.version = "2.9.9"
         ansible.extra_vars = {
                 node_ip: "192.168.50.10",
             }
@@ -53,7 +53,7 @@ Vagrant.configure(2) do |config|
           k8scluster.vm.provision "ansible_local" do |ansible|
             ansible.become = true
             ansible.compatibility_mode = "2.0"
-            ansible.version = "2.9.7"
+            ansible.version = "2.9.9"
             ansible.extra_vars = {
                     node_ip: "192.168.50.11",
                 }
@@ -84,7 +84,7 @@ Vagrant.configure(2) do |config|
               # https://www.vagrantup.com/docs/provisioning/ansible_common.html Shared Ansible Options
               ansible.become = true
               ansible.compatibility_mode = "2.0"
-              ansible.version = "2.9.7"
+              ansible.version = "2.9.9"
               ansible.extra_vars = {
                       node_ip: "192.168.50.12"
                   }
