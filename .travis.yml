@@ -14,8 +14,8 @@ jobs:
     - stage: "build Vagrant and Libvirt with KVM or QEMU - bionic"
       script:
           - sudo make deploy-libvirt
-          - sudo make deploy-vagrant
-          - echo "=============Libvirt with KVM or QEMU=============="
+          # - sudo make deploy-vagrant
+          # - echo "=============Libvirt with KVM or QEMU=============="
           # - sudo apt-get install -y cpu-checker bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
           # - sudo systemctl status libvirtd
           # - sudo libvirtd --version
