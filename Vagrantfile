@@ -14,9 +14,8 @@ Vagrant.configure(2) do |config|
   #https://wiki.ubuntu.com/Releases
   # https://app.vagrantup.com/ubuntu/boxes/focal64
   config.vm.define "k8s-master" do |k8scluster|
-      # k8scluster.vm.box = "bento/ubuntu-16.04"
+      k8scluster.vm.box = "bento/ubuntu-16.04"
       # k8scluster.vm.box = "ubuntu/focal64"
-      k8scluster.vm.box = "ubuntu/groovy64"
       k8scluster.vm.hostname = "k8s-master"
       k8scluster.vm.network "private_network", ip: "192.168.50.10"
       k8scluster.vm.provider "virtualbox" do |vb|
