@@ -22,11 +22,9 @@ apt-get install -qqy unzip jq
 # https://www.vagrantup.com/downloads.html
 # https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_SHA256SUMS
 VAGRANT_URL="https://releases.hashicorp.com/vagrant/${VAGRANT_CURRENT_VERSION}/vagrant_${VAGRANT_CURRENT_VERSION}_x86_64.deb"
-
 export VAGRANT_SHA256_URL="https://releases.hashicorp.com/vagrant/$VAGRANT_CURRENT_VERSION/vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS"
-# https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_SHA256SUMS.sig
 export  VAGRANT_SHA256_SIG_URL="https://releases.hashicorp.com/vagrant/$VAGRANT_CURRENT_VERSION/vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS.sig"
-# curl -0(zero) [url of remote file] -o(small O) output-file.
+
 # wget -nv https://releases.hashicorp.com/vagrant/${VAGRANT_CURRENT_VERSION}/vagrant_${VAGRANT_CURRENT_VERSION}_x86_64.deb
 curl -LO "${VAGRANT_URL}"
 curl -LO "${VAGRANT_SHA256_URL}"
@@ -43,22 +41,14 @@ echo "==========================================================================
 vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
 vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
 
-# https://github.com/chef/bento/tree/master/packer_templates/debian
 vagrant box add "ubuntu/groovy64" --provider=virtualbox
 vagrant mutate "ubuntu/groovy64"  libvirt
 
-# https://github.com/chef/bento/tree/master/packer_templates/ubuntu
 vagrant box add "ubuntu/focal64" --provider=virtualbox
 vagrant mutate "ubuntu/focal64" libvirt
 
-
-# https://www.debian.org/releases/
-# https://app.vagrantup.com/debian/boxes/stretch64
-# vagrant box add "debian/stretch64" --provider=libvirt
-# vagrant up --provider=libvirt vg-zeek-10
-
-# - sudo vagrant up --provider=libvirt
-- travis_wait 15 sudo vagrant up --provider=libvirt
+ vagrant up --provider=libvirt
+#travis_wait 15 sudo vagrant up --provider=libvirt
 
 vagrant box list #veridy installed boxes
 vagrant status #Check the status of the VMs to see that none of them have been created yet
