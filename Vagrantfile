@@ -11,8 +11,11 @@ Vagrant.configure(2) do |config|
     vb.cpus = 2
   end
 
+  #https://wiki.ubuntu.com/Releases
+  # https://app.vagrantup.com/ubuntu/boxes/focal64
   config.vm.define "k8s-master" do |k8scluster|
-      k8scluster.vm.box = "bento/ubuntu-16.04"
+      # k8scluster.vm.box = "bento/ubuntu-16.04"
+      k8scluster.vm.box = "ubuntu/focal64"
       k8scluster.vm.hostname = "k8s-master"
       k8scluster.vm.network "private_network", ip: "192.168.50.10"
       k8scluster.vm.provider "virtualbox" do |vb|
@@ -23,7 +26,7 @@ Vagrant.configure(2) do |config|
         ansible.playbook = "provisioning/deploy.yml"
         ansible.become = true
         ansible.compatibility_mode = "2.0"
-        ansible.version = "2.9.9"
+        # ansible.version = "2.9.9" #disabled 4 auto updates sake
         ansible.extra_vars = {
                 node_ip: "192.168.50.10",
             }
@@ -40,10 +43,10 @@ Vagrant.configure(2) do |config|
       SHELL
     end
 
-
+    # https://app.vagrantup.com/ubuntu/boxes/groovy64
     config.vm.define "node-1" do |k8scluster|
-          k8scluster.vm.box = "bento/ubuntu-16.04"
-          # k8scluster.vm.box = "ubuntu/disco64 "
+          # k8scluster.vm.box = "bento/ubuntu-16.04"
+          k8scluster.vm.box = "ubuntu/groovy64"
           k8scluster.vm.hostname = "node-1"
           k8scluster.vm.network "private_network", ip: "192.168.50.11"
           k8scluster.vm.provider "virtualbox" do |vb|
@@ -53,7 +56,7 @@ Vagrant.configure(2) do |config|
           k8scluster.vm.provision "ansible_local" do |ansible|
             ansible.become = true
             ansible.compatibility_mode = "2.0"
-            ansible.version = "2.9.9"
+            # ansible.version = "2.9.9"
             ansible.extra_vars = {
                     node_ip: "192.168.50.11",
                 }
@@ -73,7 +76,8 @@ Vagrant.configure(2) do |config|
 
 
         config.vm.define "node-2" do |k8scluster|
-            k8scluster.vm.box = "bento/ubuntu-16.04"
+            # k8scluster.vm.box = "bento/ubuntu-16.04"
+            k8scluster.vm.box = "ubuntu/focal64"
             k8scluster.vm.hostname = "node-2"
             k8scluster.vm.network "private_network", ip: "192.168.50.12"
             k8scluster.vm.provider "virtualbox" do |vb|
@@ -84,7 +88,7 @@ Vagrant.configure(2) do |config|
               # https://www.vagrantup.com/docs/provisioning/ansible_common.html Shared Ansible Options
               ansible.become = true
               ansible.compatibility_mode = "2.0"
-              ansible.version = "2.9.9"
+              # ansible.version = "2.9.9"
               ansible.extra_vars = {
                       node_ip: "192.168.50.12"
                   }
