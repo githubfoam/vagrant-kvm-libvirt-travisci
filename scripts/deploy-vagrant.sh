@@ -27,7 +27,7 @@ gpg --verify "vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS.sig" "vagrant_${VAGR
 sha256sum  vagrant_${VAGRANT_CURRENT_VERSION}_x86_64.deb # via sha256sum
 openssl dgst -sha256 vagrant_${VAGRANT_CURRENT_VERSION}_x86_64.deb # via openssl
 
-shasum -a 256 -c "vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS"
+shasum -a 256 -c "vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS" 2>&1 | grep OK
 # shasum -a 256 -c "vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS" | sudo tee output.txt  # Verify the SHASUM matches the archive.
 # cat output.txt  | grep OK # print OK
 

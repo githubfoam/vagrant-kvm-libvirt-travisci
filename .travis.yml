@@ -7,6 +7,7 @@ jobs:
       script:
           - sudo make deploy-libvirt
           - sudo make deploy-vagrant
+          - sudo make deploy-boxes
 after_success:
     - stage: Finalize
       script: sudo vagrant destroy -f
@@ -15,4 +16,4 @@ notifications:
    email:
      on_success: never # default: change
      on_failure: always # default: always
-   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+   # webhooks: https://galaxy.ansible.com/api/v1/notifications/
