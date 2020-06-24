@@ -7,7 +7,7 @@ jobs:
       script:
           - sudo make deploy-libvirt
           - sudo make deploy-vagrant
-          - sudo make deploy-boxes
+          - travis_wait 10 sudo make deploy-boxes
 after_success:
     - stage: Finalize
       script: sudo vagrant destroy -f
