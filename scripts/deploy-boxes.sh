@@ -9,10 +9,10 @@ echo "==========================================================================
 vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
 vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
 
-vagrant box add "bento/ubuntu-19.10" --provider=virtualbox
-vagrant mutate "bento/ubuntu-19.10" libvirt
+vagrant box add "bento/ubuntu-20.04" --provider=virtualbox
+vagrant mutate "bento/ubuntu-20.04" libvirt
 vagrant up --provider=libvirt
-# vagrant up --provider=libvirt k8s-master
+
 
 vagrant box list #veridy installed boxes
 vagrant status #Check the status of the VMs to see that none of them have been created yet
