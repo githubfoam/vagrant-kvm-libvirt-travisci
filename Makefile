@@ -1,6 +1,8 @@
 IMAGE := alpine/fio
 APP:="scripts/usernetes-containerd.sh"
 
+deploy-boxes:
+	bash scripts/deploy-libvirt.sh
 deploy-libvirt:
 	bash scripts/deploy-libvirt.sh
 deploy-vagrant:
