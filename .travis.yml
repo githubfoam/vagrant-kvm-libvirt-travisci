@@ -13,6 +13,7 @@ jobs:
   include:
     - stage: "build Vagrant and Libvirt with KVM or QEMU - bionic"
       script:
+          - echo "=============Libvirt with KVM or QEMU=============="
           - sudo apt-get install -y cpu-checker bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
           - sudo systemctl status libvirtd
           - sudo libvirtd --version
@@ -28,11 +29,10 @@ jobs:
           - echo "============================================="
           - sudo vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
           - sudo vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
-          - sudo vagrant box add "bento/ubuntu-16.04" --provider=virtualbox
-          - sudo vagrant mutate "bento/ubuntu-16.04" libvirt
-          - sudo vagrant box add "bento/ubuntu-19.04" --provider=virtualbox
-          - sudo vagrant mutate "bento/ubuntu-19.04" libvirt
-          - sudo vagrant status
+          - sudo vagrant box add "ubuntu/focal64" --provider=virtualbox
+          - sudo vagrant mutate "ubuntu/focal64" libvirt
+          - sudo vagrant box add "ubuntu/groovy64" --provider=virtualbox
+          - sudo vagrant mutate "ubuntu/groovy64" libvirt
           - sudo virsh list --all #show all running KVM/libvirt VMs
           - vagrant box list #veridy installed boxes
           - vagrant status #Check the status of the VMs to see that none of them have been created yet
