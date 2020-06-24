@@ -36,7 +36,8 @@ jobs:
           - sudo virsh list --all #show all running KVM/libvirt VMs
           - vagrant box list #veridy installed boxes
           - vagrant status #Check the status of the VMs to see that none of them have been created yet
-          - sudo vagrant up --provider=libvirt
+          # - sudo vagrant up --provider=libvirt
+          - travis_wait 15 sudo vagrant up --provider=libvirt
           - sudo vagrant status
           - sudo vagrant ssh k8s-master -c "hostnamectl"
           # - sudo vagrant ssh k8s-master -c "kubectl get nodes"
