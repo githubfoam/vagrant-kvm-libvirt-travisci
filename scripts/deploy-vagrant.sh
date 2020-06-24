@@ -22,27 +22,11 @@ curl -LO "${VAGRANT_URL}"
 curl -LO "${VAGRANT_SHA256_URL}"
 curl -LO "${VAGRANT_SHA256_SIG_URL}"
 export HASHICORP_PUBLIC_KEY_URL="https://keybase.io/hashicorp/pgp_keys.asc" #https://www.hashicorp.com/security
-export 'curl -sSL "${HASHICORP_PUBLIC_KEY_URL}" | gpg --import -' # import the public key (PGP key)
+# curl -sSL "${HASHICORP_PUBLIC_KEY_URL}" | gpg --import - # import the public key (PGP key)
+`curl -sSL "${HASHICORP_PUBLIC_KEY_URL}" | gpg --import -` # import the public key (PGP key)
 gpg --verify "vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS.sig" "vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS" 2>/dev/null #Verify the signature file is untampered
 shasum -a 256 -c "vagrant_${VAGRANT_CURRENT_VERSION}_SHA256SUMS" | sudo tee output.txt  # Verify the SHASUM matches the archive.
 cat output.txt  | grep OK # print OK
 
 dpkg -i vagrant_${VAGRANT_CURRENT_VERSION}_x86_64.deb
 vagrant version
-echo "========================================================================================="
-# vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
-# vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
-#
-# vagrant box add "ubuntu/groovy64" --provider=virtualbox
-# vagrant mutate "ubuntu/groovy64"  libvirt
-#
-# vagrant box add "ubuntu/focal64" --provider=virtualbox
-# vagrant mutate "ubuntu/focal64" libvirt
-#
-# vagrant up --provider=libvirt
-# #travis_wait 15 sudo vagrant up --provider=libvirt
-#
-# vagrant box list #veridy installed boxes
-# vagrant status #Check the status of the VMs to see that none of them have been created yet
-# vagrant status
-# virsh list --all #show all running KVM/libvirt VMs
