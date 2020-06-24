@@ -15,8 +15,8 @@ vagrant mutate "ubuntu/groovy64"  libvirt
 vagrant box add "ubuntu/focal64" --provider=virtualbox
 vagrant mutate "ubuntu/focal64" libvirt
 
-vagrant up --provider=libvirt
-# #travis_wait 15 sudo vagrant up --provider=libvirt
+# vagrant up --provider=libvirt
+travis_wait 10 sudo vagrant up --provider=libvirt
 
 vagrant box list #veridy installed boxes
 vagrant status #Check the status of the VMs to see that none of them have been created yet
