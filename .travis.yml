@@ -8,7 +8,7 @@ matrix:
   fast_finish: true
   include:
 
-    - name: "typing Vagrantfile - bionic"
+    - name: "build Vagrantfile template with Libvirt KVM QEMU - bionic"
       dist: bionic
       language: python
       python: 3.7
@@ -42,7 +42,7 @@ matrix:
       after_success:
         - deactivate     
 
-    - name: "build Vagrantfile template with Libvirt KVM QEMU - bionic"
+    - name: "build Vagrantfile template - bionic"
       dist: bionic
       language: python
       python: 3.7
