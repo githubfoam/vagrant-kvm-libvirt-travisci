@@ -53,8 +53,9 @@ matrix:
         - pip install -r requirements.txt
       script:
           - sudo make deploy-libvirt
-          - sudo make deploy-vagrant          
-          - vagrant init --template scripts/Vagrantfile.min.erb --var box_name="centos/8" 
+          - sudo make deploy-vagrant
+          - echo $HOME && pwd && ls -lai          
+          - vagrant init --template $HOME/scripts/Vagrantfile.min.erb --var box_name="centos/8" 
           - vagrant up
       after_success:
         - deactivate      
