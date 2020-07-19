@@ -53,9 +53,25 @@ matrix:
         - pip install -r requirements.txt
       script:
           - sudo make deploy-libvirt
-          - sudo make deploy-vagrant
-          - echo $HOME && pwd && ls -lai          
-          - sudo vagrant init --template $HOME/scripts/Vagrantfile.min.erb --var box_name="centos/8" 
+          - sudo make deploy-vagrant                   
+          - sudo vagrant init --template scripts/Vagrantfile.min.erb --var box_name="centos/8" 
           - sudo vagrant up
       after_success:
         - deactivate      
+
+    - name: "boot Vagrantfile template with Libvirt KVM QEMU - bionic"
+      dist: bionic
+      language: python
+      python: 3.7
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+        - pip install -r requirements.txt
+      script:
+          - sudo make deploy-libvirt
+          - sudo make deploy-vagrant
+          - sudo vagrant up
+          # - travis_wait 20 waitfortrav.sh
+      after_success:
+        - deactivate          
