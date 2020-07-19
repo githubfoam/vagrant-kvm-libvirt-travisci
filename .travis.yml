@@ -55,7 +55,7 @@ matrix:
           - sudo make deploy-libvirt
           - sudo make deploy-vagrant
           - echo $HOME && pwd && ls -lai          
-          - vagrant init --template $HOME/scripts/Vagrantfile.min.erb --var box_name="centos/8" 
-          - vagrant up
+          - sudo vagrant init --template $HOME/scripts/Vagrantfile.min.erb --var box_name="centos/8" 
+          - sudo vagrant up
       after_success:
         - deactivate      
