@@ -7,7 +7,8 @@ jobs:
       script:
           - sudo make deploy-libvirt
           - sudo make deploy-vagrant
-          - sudo make deploy-boxes
+          # - sudo make deploy-boxes
+          - sudo make deploy-vagrantfile
 
 after_success:
     - stage: Finalize
