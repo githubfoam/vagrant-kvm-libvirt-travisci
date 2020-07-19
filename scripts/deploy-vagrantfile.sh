@@ -19,4 +19,6 @@ end
 EOF
 
 vagrant up --provider=libvirt
-vagrant ssh -c 'sudo -i'
+
+#login wiht root
+# vagrant ssh -c 'sudo -i' # root@test:~[root@test ~]# 
