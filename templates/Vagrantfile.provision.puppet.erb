@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  # https://app.vagrantup.com/ubuntu/boxes/xenial64
+  config.vm.box = "ubuntu/xenial64"
+  # config.vm.box = "ubuntu/groovy64"
+  # config.vm.box = "ubuntu/focal64"  
+  config.vm.provision "file", source: "jenkins.list", destination: "jenkins.list"
+  config.vm.provision "file", source: "jenkins", destination: "jenkins"
+  config.vm.provision "puppet"
+
+
+  # config.vm.network "forwarded_port", guest: 8000, host: 8080, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", guest: 8000, host: 8080
+  config.vm.network "private_network", ip: "192.168.50.10"
+
+
+end
