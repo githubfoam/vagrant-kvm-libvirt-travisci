@@ -7,7 +7,8 @@ set -o xtrace
 
 echo "=============================provision Vagrantfile with puppet============================================================="
 
-cd provision_puppet && vagrant init --template Vagrantfile.template.erb 
-vagrant up          
+cd provision_puppet && vagrant init --template Vagrantfile.template.erb
+ls -lai
+cd provision_puppet && vagrant up          
 
 echo "=============================provision Vagrantfile with puppet============================================================="
