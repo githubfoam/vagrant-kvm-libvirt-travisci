@@ -2,7 +2,7 @@ IMAGE := alpine/fio
 APP:="scripts/usernetes-containerd.sh"
 
 provision-puppet:
-	bash provisin_puppet/provision-puppet.sh
+	bash provision_puppet/provision-puppet.sh
 
 deploy-vagrantfile:
 	bash scripts/deploy-vagrantfile.sh
