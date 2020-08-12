@@ -20,8 +20,7 @@ matrix:
       script:
           - sudo make deploy-libvirt
           - sudo make deploy-vagrant                   
-          - cd templates && sudo vagrant init --template templates/Vagrantfilepuppet.template.erb
-          - sudo vagrant up
+          - cd templates && sudo vagrant init --template templates/Vagrantfile.provision.puppet.erb && sudo vagrant up          
           - curl http://192.168.50.10:8080/
       after_success:
         - deactivate      
