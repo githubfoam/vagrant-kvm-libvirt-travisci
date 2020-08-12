@@ -11,7 +11,9 @@ vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with differ
 
 vagrant box add "bento/ubuntu-19.10" --provider=virtualbox
 vagrant mutate "bento/ubuntu-19.10" libvirt
-vagrant up --provider=libvirt
+vagrant up --provider=libvirt k8s-master
+vagrant up --provider=libvirt node-1
+vagrant up --provider=libvirt node-2
 
 # cd scripts && vagrant init --template Vagrantfile.erb 
 # cd scripts && vagrant up --provider=libvirt
