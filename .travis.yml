@@ -79,7 +79,7 @@ matrix:
     #     - deactivate      
 
     
-    - name: "boot Vagrantfile template with Libvirt KVM QEMU - bionic"
+    - name: "boot Vagrantfile template within Vagrantfile - bionic"
       dist: bionic
       language: python
       python: 3.7
@@ -91,7 +91,8 @@ matrix:
       script:
           - sudo make deploy-libvirt
           - sudo make deploy-vagrant
-          - sudo vagrant up
+          - sudo make deploy-boxes
+          # - sudo vagrant up
           # - travis_wait 20 waitfortrav.sh
       after_success:
         - deactivate          
