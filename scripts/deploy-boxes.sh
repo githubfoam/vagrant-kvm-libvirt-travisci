@@ -11,10 +11,13 @@ vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with differ
 
 vagrant box add "bento/ubuntu-19.10" --provider=virtualbox
 vagrant mutate "bento/ubuntu-19.10" libvirt
+# vagrant up --provider=libvirt
 
-vagrant init --template Vagrantfile.erb 
-vagrant up --provider=libvirt
-
+pwd && ls -lai
+cd scripts && vagrant init --template Vagrantfile.erb 
+pwd && ls -lai
+cd scripts && vagrant up --provider=libvirt
+pwd && ls -lai
 
 vagrant box list #veridy installed boxes
 vagrant status #Check the status of the VMs to see that none of them have been created yet
