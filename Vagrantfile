@@ -4,6 +4,6 @@ require 'erb'
 
 Vagrant.configure("2") do |config|
 
-    template = ERB.new File.read("templates/Vagrantfile.template.erb")
+    template = ERB.new File.read("templates/Vagrantfile.provision.bash.erb")
     p template.result(binding)
 end
